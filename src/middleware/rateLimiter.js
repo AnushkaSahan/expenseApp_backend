@@ -3,7 +3,7 @@ import { redis } from "../config/upstash.js";
 
 const ratelimit = new Ratelimit({
   redis: redis,
-  limiter: Ratelimit.slidingWindow(100, "60 s"),
+  limiter: Ratelimit.slidingWindow(500, "60 s"),
 });
 
 const rateLimiter = async (req, res, next) => {
@@ -19,7 +19,7 @@ const rateLimiter = async (req, res, next) => {
 
     next();
   } catch (error) {
-    console.error("Rate limit error", error);
+    console.error("Rate limit error:", error.message, error.stack);
     next(error);
   }
 };
