@@ -1,6 +1,5 @@
-import { sql } from "../config/db.js"; // DB connection
+import { sql } from "../config/db.js";
 
-// GET all transactions for a user
 export async function getTransactionsByUserId(req, res) {
   try {
     const { userId } = req.params;
@@ -16,7 +15,6 @@ export async function getTransactionsByUserId(req, res) {
   }
 }
 
-// CREATE a new transaction
 export async function createTransaction(req, res) {
   try {
     const { title, amount, category, user_id } = req.body;
@@ -38,7 +36,6 @@ export async function createTransaction(req, res) {
   }
 }
 
-// DELETE a transaction
 export async function deleteTransaction(req, res) {
   try {
     const { id } = req.params;
@@ -62,7 +59,6 @@ export async function deleteTransaction(req, res) {
   }
 }
 
-// GET summary of transactions for a user
 export async function getSummaryByUserId(req, res) {
   try {
     const { userId } = req.params;
