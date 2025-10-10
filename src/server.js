@@ -6,6 +6,7 @@ import rateLimiter from "./middleware/rateLimiter.js";
 import transactionsRoute from "./routes/transactionsRoute.js";
 import budgetsRoute from "./routes/budgetsRoute.js";
 import savingsGoalsRoute from "./routes/savingsGoalsRoute.js";
+import reportsRoute from "./routes/reportsRoute.js";
 
 dotenv.config();
 
@@ -15,7 +16,7 @@ app.use(cors());
 app.use(rateLimiter);
 app.use(express.json());
 
-const PORT = process.env.PORT || 5002;
+const PORT = process.env.PORT || 5001;
 
 app.use("/api/transactions", transactionsRoute);
 console.log("Mounted transactions route");
@@ -23,8 +24,9 @@ app.use("/api/budgets", budgetsRoute);
 console.log("Mounted budgets route");
 app.use("/api/savings-goals", savingsGoalsRoute);
 console.log("Mounted savings-goals route");
+app.use("/api/reports", reportsRoute);
+console.log("Mounted reports route");
 
-// Catch-all for unmatched routes
 app.use("*", (req, res) => {
   res.status(404).json({ message: "Route not found" });
 });
