@@ -7,6 +7,7 @@ import transactionsRoute from "./routes/transactionsRoute.js";
 import budgetsRoute from "./routes/budgetsRoute.js";
 import savingsGoalsRoute from "./routes/savingsGoalsRoute.js";
 import reportsRoute from "./routes/reportsRoute.js";
+import syncRoute from "./routes/syncRoute.js";
 
 dotenv.config();
 
@@ -26,6 +27,8 @@ app.use("/api/savings-goals", savingsGoalsRoute);
 console.log("Mounted savings-goals route");
 app.use("/api/reports", reportsRoute);
 console.log("Mounted reports route");
+app.use("/api/sync", syncRoute);
+console.log("Mounted sync route");
 
 app.use("*", (req, res) => {
   res.status(404).json({ message: "Route not found" });
